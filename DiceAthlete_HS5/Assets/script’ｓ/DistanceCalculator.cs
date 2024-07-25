@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DistanceCalculator : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform throwPoint;
+    public TextMeshProUGUI resultText;
+    private Vector3 javelinStartPoint;
+
     void Start()
     {
-        
+        javelinStartPoint = throwPoint.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CalculateDistance(Vector3 javelinEndPoint)
     {
-        
+        float distance = Vector3.Distance(javelinStartPoint, javelinEndPoint);
+        PlayerPrefs.SetFloat("ThrowDistance", distance);
+        SceneManager.LoadScene("ResultScene");
     }
 }
