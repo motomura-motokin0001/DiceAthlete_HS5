@@ -18,6 +18,6 @@ public class DistanceCalculator : MonoBehaviour
     {
         float distance = Vector3.Distance(javelinStartPoint, javelinEndPoint);
         PlayerPrefs.SetFloat("ThrowDistance", distance);
-        SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene("Result");
     }
 }
