@@ -139,6 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d572cb96aa6099047838e48ef2435309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroySceneName: Game
+  SceneLoadName: Result
+  EffectSceneName: Load
+  StockTime: 2
 --- !u!70 &2670327145148124431
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

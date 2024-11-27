@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class JavelinThrower : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class JavelinThrower : MonoBehaviour
     public Transform throwPoint;
     public CameraFollow2D cameraFollow; // カメラ追従スクリプトの参照
     public TextMeshProUGUI distanceText; // 距離表示用のTextMeshPro
+    public TextMeshProUGUI ResultText;
+    public GameObject canvasName;
 
     private GameObject currentJavelin;
     private Vector2 startPosition;
@@ -46,6 +49,19 @@ public class JavelinThrower : MonoBehaviour
             // 飛んでいる距離を計算して表示
             float distance = Vector2.Distance(startPosition, currentJavelin.transform.position);
             distanceText.text = distance.ToString("F2") + "M";
+            if(currentJavelin.transform.position.y <= -1 )
+            {
+                StartCoroutine(Result());
+            }
+            
         }
     }
+
+    IEnumerator Result()
+    {
+        yield return new WaitForSeconds(3);
+        canvasName.gameObject.SetActive(true);
+        ResultText.text = distanceText.text;
+    }
 }
+//Dicecontrollerから呼び出される　投げに特化したもの　スコアも表示

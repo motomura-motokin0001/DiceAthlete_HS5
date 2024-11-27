@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class JavelinCollisionHandler : MonoBehaviour
 {
@@ -6,6 +9,7 @@ public class JavelinCollisionHandler : MonoBehaviour
     private bool isStuck = false;
     private float lastAngle;
     private Vector2 startPosition;
+
 
     void Start()
     {
@@ -31,26 +35,15 @@ public class JavelinCollisionHandler : MonoBehaviour
             rb.angularVelocity = 0f;
             rb.isKinematic = true;
             isStuck = true;
-
             // 槍を地面に固定し、衝突前の角度を適用
             transform.position = collision.contacts[0].point;
             transform.rotation = Quaternion.Euler(0, 0, lastAngle);
-
             // 距離を計算して記録
             float distance = Vector2.Distance(startPosition, transform.position);
-
-            // // DistanceManager.Instance が null でないか確認
-            // if (DistanceManager.Instance != null)
-            // {
-            //     DistanceManager.Instance.SetFinalDistance(distance);
-
-            //     // リザルトシーンへ遷移
-            //     UnityEngine.SceneManagement.SceneManager.LoadScene("Result");
-            // }
-            // else
-            // {
-            //     Debug.LogError("DistanceManager.Instance is null. Please ensure DistanceManager is in the scene.");
-            // }
+            
         }
     }
+
+    
 }
+//槍の物理挙動を管理するためのスクリプト

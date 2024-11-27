@@ -16,3 +16,4 @@ public class CameraFollow2D : MonoBehaviour
         }
     }
 }
+//2Dゲームでカメラを特定のオブジェクト（槍など）に追従させる機能を提供するスクリプトです。
